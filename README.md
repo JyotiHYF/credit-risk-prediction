@@ -4,15 +4,27 @@ A team project for the ReDI AI course.
 
 ## What is this project?
 
-When someone applies for a loan, the bank needs to estimate how likely it is that the person will repay it. We use public data of past loans to build a model that gives each new applicant a risk score, explains the reasons behind it, and checks how fair the results are.
+When someone applies for a loan, a bank needs to assess the risk of whether the borrower will repay it. In this project, we use historical LendingClub loan data to develop a machine learning system that predicts the likelihood of loan default.
 
-## Our goals
+Our goal is to build an end-to-end credit risk prediction solution that:
 
-1. Predict whether a loan will be repaid or will default.
-2. Use only information a bank would know on the day of the application, so the results are realistic (no data leakage).
-3. Compare a simple model with stronger ones and measure them properly, not just with accuracy.
-4. Explain each prediction and check the results across groups, being open about the limits.
-5. Show the result in a small web page.
+- Predicts loan default risk using machine learning.
+- Explains model predictions using SHAP.
+- Evaluates model performance using appropriate metrics.
+- Examines fairness across relevant groups.
+- Presents predictions through a simple web application.
+
+This is an educational project and is not intended for real-world lending decisions.
+
+## Our Goals
+
+1. **Prediction:** Predict whether a loan will be fully repaid or charged off.
+2. **Data quality:** Use information available at loan application time and prevent data leakage.
+3. **Model comparison:** Compare Logistic Regression, Random Forest and XGBoost.
+4. **Evaluation:** Measure performance using precision, recall, ROC-AUC, PR-AUC and confusion matrices.
+5. **Explainability:** Use SHAP to understand the factors influencing predictions.
+6. **Fairness:** Evaluate model outcomes across relevant groups and discuss potential bias and limitations.
+7. **Deployment:** Build a simple web application connected to a FastAPI prediction endpoint.
 
 ## Data
 
@@ -36,14 +48,30 @@ Note: this is US data from past years. It is used here for learning, and the sam
 
 ## Project structure
 
-```
 credit-risk-project/
-  data/          (not on GitHub, download from Kaggle)
-  notebooks/     our notebooks
-  src/           reusable scripts
-  api/           the web service for the demo
-  README.md
-```
+│
+├── data/
+│ ├── archive/
+│ └── processed/
+│
+├── notebooks/
+│ ├── 01_data.ipynb
+│ ├── 02_models.ipynb
+│ └── 03_explain.ipynb
+│
+├── src/
+│ └── prepare_data.py
+│
+├── models/
+│
+├── api/
+│ └── main.py
+│
+├── webpage/
+│
+├── requirements.txt
+├── .gitignore
+└── README.md
 
 ## How to run
 
@@ -57,12 +85,28 @@ pip install pandas numpy scikit-learn matplotlib seaborn jupyter
 
 Then download the data (see above) and open the notebooks in order.
 
-## How we work together
+## How We Work Together
 
-- Nobody pushes straight to `main`. We use a branch and a pull request for every change.
-- We always pull before starting work.
-- One owner per file.
-- Short check-ins twice a week.
+### Branching strategy
+
+- `main`: Stable and tested version of the project.
+- `develop`: Integration branch for team development.
+- `feature/*`: Individual branches for new features and tasks.
+
+### Team rules
+
+1. Nobody pushes directly to `main`.
+2. Every change must go through a Pull Request.
+3. Always pull the latest changes before starting work.
+4. Each file has one primary owner to avoid conflicts.
+5. Review and test changes before merging.
+
+### Weekly collaboration
+
+- Two 15-minute team check-ins each week.
+- Each member shares completed work, next steps and blockers.
+- Each member explains their work to the team at least once a week.
+- Team members help each other understand the complete project.
 
 ## Status
 
